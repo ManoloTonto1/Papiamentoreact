@@ -26,14 +26,14 @@ const auth = getAuth(app);
 const user = auth.currentUser;
 const db = getFirestore();
 
-onAuthStateChanged(auth, user =>{
-  if(user !== null){
-    console.log("user logged in");
-  }
-  else{
-    console.log("No user signed in");
-  }
-})
+// onAuthStateChanged(auth, user =>{
+//   if(user !== null){
+//     console.log("user logged in");
+//   }
+//   else{
+//     console.log("No user signed in");
+//   }
+// })
 
 
 
