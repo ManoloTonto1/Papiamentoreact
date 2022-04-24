@@ -1,36 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/App.css';
 import {db} from './db/Firebase';
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { motion} from "framer-motion";
 
-async function getinfo() {
-  const collectionRef = await collection("", 'papiamento');
-  const docSnap = await getDocs(collectionRef);
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
-}
+
+
 function BooleanQuestion({ word }: { word: string }) {
+  function chooseWord() : string{
+  
+    const chosenWord = arrayofDocs[Math.floor(Math.random() * arrayofDocs.length)];
 
-  getinfo();
+    return chosenWord;
+  }
+  const [arrayofDocs, setArrayofDocs] = useState([]);
+  const [chosenWord, setChosenword] = useState(null);
+  useEffect(()=>{
+    const getInfo = async () => {
+      let arrayOfDocs : any = [];
+      const querySnapshot = await getDocs(collection(db, "Papiamento-data"));
+      querySnapshot.forEach((doc) => {
+        arrayOfDocs.push(doc.data());
+      });
+      
+      setChosenword(arrayOfDocs[Math.floor(Math.random() * arrayOfDocs.length)].papiamento);
+    }
+
+    getInfo()
+      .catch(console.error)
+  },[]);
+
   return (
     <>
-      <div>
-        <div>
-          <span>Is this Word or Sentence in Papiamento?</span>
+      <div className='root'>
+        <div className='header'>
+          <span className='question'>E palabra of zin aki ta den papiamento?</span>
           <br />
-          <span>{word}</span>
+          <br />
+          <span className='word'>{chosenWord}</span>
         </div>
-        <div>
-          <button>Yes</button>
-          <button>NO</button>
+        <div className='button-div'>
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+             onClick={()=>console.log("yes")}>Si</motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+             onClick={()=>console.log("no")}>No</motion.button>
         </div>
-        <div>
-          <button>Skip</button>
+        <div className='bottom-button-div'>
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+             onClick={()=>console.log("skip")}>Skip</motion.button>
         </div>
       </div>
 
