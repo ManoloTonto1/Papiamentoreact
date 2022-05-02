@@ -22,6 +22,9 @@ function SentanceQuestion(){
 
 
   };
+  const submit = async () => {
+
+  }
   useEffect(() => {
     // const i = getword();
     // i.catch(console.error);
@@ -43,7 +46,7 @@ function SentanceQuestion(){
             className='green'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
-            onClick={()=>console.log("cla")}>cla</motion.button>
+            onClick={()=>console.log("cla")}>Cla</motion.button>
 
           <motion.button
             className='yellow'
