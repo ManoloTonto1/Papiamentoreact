@@ -1,5 +1,5 @@
 body {
-  background-color: #00B4D8;
+  background-color: #008DF2;
   color: whitesmoke;
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
@@ -7,6 +7,9 @@ body {
 
 .root {
   margin-top: 5rem;
+  padding: 4rem;
+  background-color: whitesmoke;
+  border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,6 +20,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: clamp(60%, 300px, 100%);
+  height: 58vh;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
 }
 
 .root .header {
@@ -25,34 +36,70 @@ body {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  color: #161616;
 }
 
 .root .header .question {
+  display: block;
+  background-color: #e8e8e8;
+  border: 1px solid #c2c2c2;
+  border-radius: 15px;
   font-size: 2rem;
   font-weight: bold;
-  padding-bottom: 1rem;
+  padding: 1rem;
 }
 
 .root .header .word {
+  border-radius: 15px;
+  background-color: #e8e8e8;
+  border: 1px solid #c2c2c2;
+  padding: 0.5rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+.root .header .text-input {
+  border-radius: 15px;
+  background-color: #e8e8e8;
+  border: 1px solid #c2c2c2;
+  width: 80%;
+  padding: .75rem;
+  font-size: 1rem;
+  -webkit-transition: 150ms;
+  transition: 150ms;
+  outline: none;
+}
+
+.root .header .text-input:focus {
+  border: 1px solid #008DF2;
+}
+
 .root .button-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .root .button-div button {
-  background-color: #03045E;
   border: none;
   color: whitesmoke;
   font-size: 1.5rem;
   font-weight: bold;
   margin-right: 1rem;
   padding: 1rem;
-  width: 10rem;
+  width: clamp(20%, 100px, 100%);
   border-radius: 15px;
   cursor: pointer;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .root .button-div button:hover {
@@ -61,7 +108,6 @@ body {
 }
 
 .root .bottom-button-div button {
-  background-color: #03045E;
   border: none;
   color: whitesmoke;
   font-size: 1.5rem;
@@ -71,5 +117,17 @@ body {
   width: 10rem;
   border-radius: 15px;
   cursor: pointer;
+}
+
+.green {
+  background-color: #29C01C;
+}
+
+.red {
+  background-color: #FF0000;
+}
+
+.yellow {
+  background-color: #FBBA38;
 }
 /*# sourceMappingURL=App.css.map */

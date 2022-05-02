@@ -1,15 +1,15 @@
-import React,{useEffect,useState} from 'react';
-import './styles/App.css';
-import { BooleanQuestion } from './components/BooleanQuestion';
-import {motion} from 'framer-motion';
-import { db } from './db/Firebase';
+import React, { useEffect, useState } from 'react';
+import { db } from '../db/Firebase';
 import { doc, updateDoc, collection, getDocs, query, where } from "firebase/firestore";
-function SentanceQuestion(){
+import { motion } from "framer-motion";
+
+export function BooleanQuestion() {
+
   const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", isPapiamento: 0, isNotPapiamento: 0 });
 
   //function to skip and to also get a docuement
   const getword = async () => {
-    const max = 16571;
+    const max = 16572;
     const chosenNumber = Math.floor(Math.random() * max);
     const q = query(collection(db, "Papiamento-data"), where("id", "==", chosenNumber));
 
@@ -22,50 +22,64 @@ function SentanceQuestion(){
 
 
   };
+  const setPapiamento = async () => {
+    console.log(chosenWord);
+    const ref = doc(db, "Papiamento-data", chosenWord.papiamento);
+    let number = chosenWord.isPapiamento + 1;
+
+    await updateDoc(ref, {
+      isPapiamento: number
+    }).then(() => getword());
+
+  };
+  const setNotPapiamento = async () => {
+    const ref = doc(db, "Papiamento-data", chosenWord.papiamento);
+    let number = chosenWord.isNotPapiamento + 1;
+
+    await updateDoc(ref, {
+      isNotPapiamento: number
+    }).then(() => getword());
+
+
+  };
+
+
   useEffect(() => {
-    // const i = getword();
-    // i.catch(console.error);
+    const i = getword();
+    i.catch(console.error);
   }, []);
-  return(
-        <>
+
+  return (
+    <>
       <div className='root'>
         <div className='header'>
-          <span className='question'>Traduci e palabra of zin aki na Ingles</span>
+          <span className='question'>E palabra of zin aki ta den papiamento?</span>
+
           <br />
           <br />
-          <motion.span className='word'>bo mama ta super bunita</motion.span>
-          <br/>
-          <br/>
-          <motion.input type='text' className='text-input'>{}</motion.input>
+          <motion.span className='word'>{chosenWord.papiamento}</motion.span>
         </div>
         <div className='button-div'>
           <motion.button
             className='green'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
-            onClick={()=>console.log("cla")}>cla</motion.button>
-
+            onClick={setPapiamento}>Si</motion.button>
+          <motion.button
+            className='red'
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={setNotPapiamento}>No</motion.button>
+        </div>
+        <div className='bottom-button-div'>
           <motion.button
             className='yellow'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
-            onClick={()=>console.log("cla")}>Skip</motion.button>
+            onClick={getword}>Skip</motion.button>
         </div>
-
       </div>
 
     </>
   );
 }
-
-
-
-function App() {
-  return (
-    <>
-      <SentanceQuestion/>
-    </>
-  );
-}
-export default App;
-
