@@ -33,25 +33,26 @@ body {
         padding-bottom: 4rem;
         align-items: center;
         text-align: center;
-        color: rgb(22, 22, 22);
+        color: #353535;
 
         .question {
             display: block;
             background-color: $grey;
             border: 1px solid $greydark;
             border-radius: 15px;
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 1.7rem;
+            //font-weight: bold;
             padding: 1rem;
 
         }
 
         .word {
+            display: block;
             border-radius: 15px;
             background-color: $grey;
             border: 1px solid $greydark;
-            padding: 0.5rem;
-            font-size: 1.5rem;
+            padding: 0.7rem;
+            font-size: 2rem;
             font-weight: bold;
         }
         .text-input{
@@ -125,3 +126,23 @@ body {
 .yellow {
     background-color: $yellow;
 }
+
+.back-button {
+    outline: none;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    left: 1rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgb(68, 68, 255);
+    z-index: 80;
+    color: whitesmoke;
+    font-size: x-large;
+    font-weight: 1000;
+  }
