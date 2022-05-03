@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes,Router, useLocation} from 'react-router-dom';	
 import { AnimatePresence } from 'framer-motion';
 import { BooleanQuestion } from './components/BooleanQuestion';
+import { SentanceQuestion } from './components/SentanceQuestion';
 
 const root = ReactDOM.createRoot(
   
@@ -25,6 +26,7 @@ function Rout(){
         {/* add all routes here*/}
         <Route path="/" element={<App/>} />
         <Route path="/si-of-no" element={<BooleanQuestion />} />
+        <Route path="/traduci" element={<SentanceQuestion />} />
 
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>

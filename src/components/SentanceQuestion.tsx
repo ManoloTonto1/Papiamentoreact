@@ -85,7 +85,7 @@ export function SentanceQuestion() {
   }, []);
   return (
     <>
-      <RoundButton click={() => navigate('/si-of-no')} />
+      <RoundButton click={() => navigate('/')} />
       <motion.div
         variants={slidein}
         initial="hidden"
