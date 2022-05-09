@@ -99,7 +99,7 @@ export function SentanceQuestion() {
           <motion.span className='word'>{chosenWord.papiamento}</motion.span>
           <br />
           <br />
-          <motion.input ref={input} type='text' placeholder='Typ e traduccion na ingles kiden' className='text-input'></motion.input>
+          <motion.input ref={input} type='text' pattern="[a-z]" placeholder='Typ e traduccion na ingles kiden' className='text-input' required></motion.input>
         </div>
         <div className='button-div'>
           <motion.button
