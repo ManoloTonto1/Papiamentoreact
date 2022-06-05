@@ -4,14 +4,20 @@ import { BooleanQuestion } from './components/BooleanQuestion';
 import { SentanceQuestion } from './components/SentanceQuestion';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-
+import { slideinMenu } from './components/animations';
 
 
 function App() {
+
   const navigate = useNavigate();
   return (
     <>
-      <div className='main-menu-root'>
+      <motion.div
+      variants={slideinMenu}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className='main-menu-root'>
       <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.9 }}
@@ -37,6 +43,7 @@ function App() {
       <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.9 }}
+      onClick={() => navigate('/info')}
       className='card'>
         <div className='top blue-gradient'>
         <img className='image-social' src="/social.svg" alt="translate" />
@@ -45,7 +52,7 @@ function App() {
         <p>Mas informacion over di e proyecto y e team patras di e proyecto aki.</p>
       </motion.div>
       
-      </div>
+      </motion.div>
 
     </>
   );

@@ -4,29 +4,9 @@ import { doc, updateDoc, collection, getDocs, query, where } from "firebase/fire
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 import { RoundButton } from './RoundButton';
-
+import { slidein } from './animations';
 export function BooleanQuestion() {
-  const slidein = {
-    hidden: {
-      x: "-100vh",
-      opacity: 0,
-    },
-    visible: {
-      x: "-50%",
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: "spring",
-        damping: 20,
-        stiffness: 200,
-      },
-    },
-    exit: {
-      x: "-100vh",
-      opacity: 0,
-      transition: { duration: 0.5 }
-    },
-  };
+
 
   const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", isPapiamento: 0, isNotPapiamento: 0 });
   const navigate = useNavigate();

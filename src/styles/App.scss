@@ -12,6 +12,8 @@ $breakpoint-desktop: 1024px;
 
 
 body {
+    margin: 0;
+    overflow: hidden;
     background-color: #008DF2;
     color: whitesmoke;
     font-family: 'Roboto', sans-serif;
@@ -217,7 +219,102 @@ body {
     }
 }
 
+.outer-root {
+    height: 100vh;
+    position: relative;
+
+}
+
+.outer-info {
+    position: relative;
+    overflow: auto;
+    height: 100vh;
+    overflow: auto;
+    max-height: 100%;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+
+}
+
+.outer-info::-webkit-scrollbar {
+    display: none;
+}
+
+
+.info-container {
+
+    color: $text;
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    padding: 4rem;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+
+    margin-bottom: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.manolo-img {
+    width: 15rem;
+}
+
+.contact-container {
+    display: flex;
+
+    .icon-container {
+        font-size: 2rem;
+        padding-top: 15vh;
+        padding-left: 2vw;
+        color: #353535;
+
+        a {
+            margin-left: 0.5rem;
+        }
+    }
+}
+
 @media only screen and (max-width: 900px) {
+    .manolo-img {
+        width: 10rem;
+    }
+
+    .info-container {
+        color: $text;
+        text-align: left;
+        margin-top: 5rem;
+        padding: 4rem;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60vw;
+        //height: 110%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+
+        p {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+    }
+
     .root {
         margin-top: 5rem;
         padding: 4rem;
@@ -227,12 +324,12 @@ body {
         flex-direction: column;
         align-items: center;
         width: 60vw;
-        height: 25rem; v 
+        height: 25rem;
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
         box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
-        ;
+
 
         .header {
             padding-bottom: 4rem;

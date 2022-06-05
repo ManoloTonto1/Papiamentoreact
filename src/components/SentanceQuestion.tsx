@@ -4,30 +4,11 @@ import { db } from '../db/Firebase';
 import { doc, updateDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { RoundButton } from './RoundButton';
 import { useNavigate } from 'react-router-dom';
+import {slidein} from './animations';
 
 export function SentanceQuestion() {
-  const slidein = {
-    hidden: {
-      x: "-100vh",
-      opacity: 0,
-    },
-    visible: {
-      x: "-50%",
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: "spring",
-        damping: 20,
-        stiffness: 200,
-      },
-    },
-    exit: {
-      x: "-100vh",
-      opacity: 0,
-      transition: { duration: 0.5 }
-    },
-  };
-  const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", english: [] });
+
+  const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", english: [],isPapiamento: 0 });
   const input = useRef(null);
   const navigate = useNavigate();
 
@@ -56,7 +37,10 @@ export function SentanceQuestion() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       // console.log();
-      setChosenword({ id: doc.data().id, papiamento: doc.data().papiamento, english: doc.data().english });
+      setChosenword({ id: doc.data().id,
+         papiamento: doc.data().papiamento,
+          english: doc.data().english,
+          isPapiamento: doc.data().isPapiamento});
     });
 
 
@@ -69,10 +53,12 @@ export function SentanceQuestion() {
       return;
     }
     const ref = doc(db, "Papiamento-data", chosenWord.papiamento);
+    let number = chosenWord.isPapiamento + 1;
     const data = chosenWord.english;
     data.push(input.current.value.toLowerCase());
     await updateDoc(ref, {
       english: data,
+      isPapiamento: number
     }).then(() => {
       input.current.value = "";
       getword();

@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  overflow: hidden;
   background-color: #008DF2;
   color: whitesmoke;
   font-family: 'Roboto', sans-serif;
@@ -229,7 +231,111 @@ body {
   background: linear-gradient(172deg, #e4f441 0%, #ff7fc0 100%);
 }
 
+.outer-root {
+  height: 100vh;
+  position: relative;
+}
+
+.outer-info {
+  position: relative;
+  overflow: auto;
+  height: 100vh;
+  overflow: auto;
+  max-height: 100%;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.outer-info::-webkit-scrollbar {
+  display: none;
+}
+
+.info-container {
+  color: #353535;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  padding: 4rem;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60vw;
+  margin-bottom: auto;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.manolo-img {
+  width: 15rem;
+}
+
+.contact-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact-container .icon-container {
+  font-size: 2rem;
+  padding-top: 15vh;
+  padding-left: 2vw;
+  color: #353535;
+}
+
+.contact-container .icon-container a {
+  margin-left: 0.5rem;
+}
+
 @media only screen and (max-width: 900px) {
+  .manolo-img {
+    width: 10rem;
+  }
+  .info-container {
+    color: #353535;
+    text-align: left;
+    margin-top: 5rem;
+    padding: 4rem;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 60vw;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    -webkit-box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  }
+  .info-container p {
+    font-size: 16px;
+  }
+  .info-container h1 {
+    font-size: 20px;
+  }
   .root {
     margin-top: 5rem;
     padding: 4rem;
