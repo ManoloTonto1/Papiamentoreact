@@ -5,10 +5,11 @@ import { doc, updateDoc, collection, getDocs, query, where } from "firebase/fire
 import { RoundButton } from './RoundButton';
 import { useNavigate } from 'react-router-dom';
 import {slidein} from './animations';
+import { ISentanceQDoc } from './types';
 
 export function SentanceQuestion() {
 
-  const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", english: [],isPapiamento: 0 });
+  const [chosenWord, setChosenword] = useState<ISentanceQDoc>({ id: '', papiamento: "Cargando, Please warda.", english: [],isPapiamento: 0 });
   const input = useRef(null);
   const navigate = useNavigate();
 

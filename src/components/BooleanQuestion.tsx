@@ -5,11 +5,20 @@ import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 import { RoundButton } from './RoundButton';
 import { slidein } from './animations';
+import { IbooleanQDoc } from './types';
+
 export function BooleanQuestion() {
 
-
-  const [chosenWord, setChosenword] = useState({ id: '', papiamento: "Cargando, Please warda.", isPapiamento: 0, isNotPapiamento: 0 });
   const navigate = useNavigate();
+  const [chosenWord, setChosenword] = useState<IbooleanQDoc>({ 
+    id: '', 
+    papiamento: "Cargando, Please warda.",
+    isPapiamento: 0,
+    isNotPapiamento: 0 
+  });
+
+
+
   //function to skip and to also get a docuement
   const getword = async () => {
     const max = 16572;
@@ -20,7 +29,12 @@ export function BooleanQuestion() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.id, " => ", doc.data().papiamento);
-      setChosenword({ id: doc.data().id, papiamento: doc.data().papiamento, isPapiamento: doc.data().isPapiamento, isNotPapiamento: doc.data().isNotPapiamento });
+      setChosenword({
+        id: doc.data().id,
+        papiamento: doc.data().papiamento,
+        isPapiamento: doc.data().isPapiamento,
+        isNotPapiamento: doc.data().isNotPapiamento
+      });
     });
 
 
